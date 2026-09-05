@@ -1,3 +1,4 @@
+
 # ⚡ The Digital Logic Handbook ⚡
 ### *A Modular Component Blueprint & Guide for Sebastian Lague's Digital Logic Simulator*
 
@@ -9,18 +10,19 @@
 
 ---
 
-A Progressive Architectural Textbook: Learn how computers are built bottom-up, starting from two basic primitives (`AND` and `NOT` gates) and scaling step-by-step to an 8-bit calculator, a full-fledged 8-bit CPU, and eventually 16-bit, 32-bit, and 64-bit architectures.
+## 💡 Overview
 
-This repository serves as an information hub and architectural reference to find various digital logic component designs, schematics, and timing breakdowns.
+This repository provides detailed technical documentation, architectural breakdowns, and schematics for digital logic components built within Sebastian Lague's *Digital Logic Simulator*.
+
+Learn how computers are built bottom-up, starting from two basic primitives (`AND` and `NOT` gates) and scaling step-by-step to an 8-bit calculator, a full-fledged 8-bit CPU, and eventually 16-bit, 32-bit, and 64-bit architectures.
 
 ---
 
 ## 🌟 Key Features of This Repository
 
-* 🎬 **Video-First Documentation:** Every component contains live `.mp4` video recordings showing signal propagation, inputs toggling, and outputs responding in real time.
-* 📊 **Compact Truth Tables:** Standardized 5x2 sub-table formats save vertical space while displaying complete input-output relationships.
-* 🔀 **Multiple Design Methods:** Complex components feature multiple sub-folders (e.g., `Method_01_Ripple_Carry` vs. `Method_02_Carry_Lookahead`) so you can explore beginner readability vs. high-speed optimization.
-* 🧱 **Modular Tier Scaling:** Every sub-circuit shows how lower-level logic gates connect and scale cleanly into higher-level system blocks.
+* 🎬 **Video Demonstrations:** Every component folder includes `.mp4` video recordings showing signal propagation, pin toggling, and real-time execution.
+* 🔀 **Multiple Implementation Methods:** Complex circuits feature sub-folder variants (e.g., `Method_01_Ripple_Carry` vs. `Method_02_Carry_Lookahead`) to highlight trade-offs between logic simplicity and gate propagation speed.
+* 📐 **Wire & Gate Blueprints:** Clear wire-by-wire connection specs and signal paths designed for manual layout inside the simulator.
 
 ---
 
@@ -29,7 +31,6 @@ This repository serves as an information hub and architectural reference to find
 ### 🟢 Chapter 01: Introduction & Simulator Mechanics
 * [1.0 Welcome & Architecture Roadmap](Chapter_01_Introduction_And_Setup/1.0_Welcome_And_Course_Overview.md)
 * [1.1 Sebastian Lague Simulator Mechanics Guide](Chapter_01_Introduction_And_Setup/1.1_Sebastian_Lague_Simulator_Guide.md)
-* [1.2 How to Read Compact Truth Tables & Signal Schematics](Chapter_01_Introduction_And_Setup/1.2_How_To_Read_Compact_Truth_Tables.md)
 
 ---
 
@@ -39,7 +40,7 @@ This repository serves as an information hub and architectural reference to find
 * **[2.1 NOT Gate (Inverter)](Chapter_02_Primitive_Gates/2.1_NOT_Gate/)** — *Signal inversion*
 * **[2.2 AND Gate](Chapter_02_Primitive_Gates/2.2_AND_Gate/)** — *Conjunction logic*
 * **[2.3 OR Gate](Chapter_02_Primitive_Gates/2.3_OR_Gate/)**
-  * 🔹 [Method 01: Basic NAND-Derived](Chapter_02_Primitive_Gates/2.3_OR_Gate/Method_01_Basic_NAND_Derived/) — *Standard Demorgan build*
+  * 🔹 [Method 01: Basic NAND-Derived](Chapter_02_Primitive_Gates/2.3_OR_Gate/Method_01_Basic_NAND_Derived/) — *Standard DeMorgan build*
   * ⚡ [Method 02: Low Propagation Delay](Chapter_02_Primitive_Gates/2.3_OR_Gate/Method_02_Low_Propagation_Delay/) — *Optimized gate depth*
 * **[2.4 NAND Gate](Chapter_02_Primitive_Gates/2.4_NAND_Gate/)** — *Universal logic gate*
 * **[2.5 NOR Gate](Chapter_02_Primitive_Gates/2.5_NOR_Gate/)** — *Inverted OR gate*
@@ -69,7 +70,7 @@ This repository serves as an information hub and architectural reference to find
 * **[4.1 Half Adder](Chapter_04_Arithmetic_Logic_Unit/4.1_Half_Adder/)** — *Sum & Carry out without Carry-In*
 * **[4.2 Full Adder](Chapter_04_Arithmetic_Logic_Unit/4.2_Full_Adder/)** — *3-bit addition building block*
 * **4.3 8-Bit Adders**
-  * 🔹 [Method 01: Ripple Carry Adder](Chapter_04_Arithmetic_Logic_Unit/4.3_8Bit_Adder/Method_01_Ripple_Carry_Beginner/) — *Beginner design, linear delay*
+  * 🔹 [Method 01: Ripple Carry Adder](Chapter_04_Arithmetic_Logic_Unit/4.3_8Bit_Adder/Method_01_Ripple_Carry_Beginner/) — *Linear delay setup*
   * ⚡ [Method 02: Carry Lookahead Adder](Chapter_04_Arithmetic_Logic_Unit/4.3_8Bit_Adder/Method_02_Carry_Lookahead_Advanced/) — *High-speed parallel carry computation*
 * **[4.4 8-Bit Subtractor (2's Complement)](Chapter_04_Arithmetic_Logic_Unit/4.4_8Bit_Subtractor_Twos_Complement/)** — *Invert and Add-1 subtraction core*
 * **[4.5 8-Bit Magnitude Comparator](Chapter_04_Arithmetic_Logic_Unit/4.5_8Bit_Magnitude_Comparator/)** — *Greater-Than, Less-Than, Equal-To evaluation*
@@ -141,15 +142,14 @@ This repository serves as an information hub and architectural reference to find
 ├── Chapter_21_To_40  -> 32-Bit RISC-style CPU Architecture & Pipelining
 └── Chapter_41_To_100 -> 64-Bit System Design, Floating Point Units (FPU), & Cache Memory
 
-```
-
+---
 
 ## 🤝 Community & Contributions
 
-Got an idea for a faster carry chain? Designed a custom 64-bit component?
+Contributions, circuit optimizations, and documentation fixes are welcome!
 
-* Read our [CONTRIBUTING.md](https://www.google.com/search?q=CONTRIBUTING.md) guide to submit new circuits, alternative methods, or documentation updates.
-* Check out the [IDEAS_AND_REQUESTS.md](https://www.google.com/search?q=IDEAS_AND_REQUESTS.md) board to see what components are currently requested by the community.
+* Read our [CONTRIBUTING.md](https://www.google.com/search?q=CONTRIBUTING.md) guide to submit new component designs, optimized methods, or updates.
+* Check out the [IDEAS_AND_REQUESTS.md](https://www.google.com/search?q=IDEAS_AND_REQUESTS.md) board to see what circuits are currently requested.
 
 ---
 
