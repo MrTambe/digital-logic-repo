@@ -137,7 +137,6 @@ Learn how computers are built bottom-up, starting from two basic primitives (`AN
 
 ### 🚀 Scaling Beyond (Future Chapters Roadmap)
 
-```text
 ├── Chapter_11_To_20  -> 16-Bit Architecture & Expanded Instruction Set
 ├── Chapter_21_To_40  -> 32-Bit RISC-style CPU Architecture & Pipelining
 └── Chapter_41_To_100 -> 64-Bit System Design, Floating Point Units (FPU), & Cache Memory
@@ -155,6 +154,6 @@ Contributions, circuit optimizations, and documentation fixes are welcome!
 
 *Happy wiring! Let's build a computer.* 🔌💡
 
-```
+
 
 ```
