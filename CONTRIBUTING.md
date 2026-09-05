@@ -1,8 +1,8 @@
 # ✨ Contributing to the Digital Logic Repository ✨
 
-First off, welcome! Thank you for your interest in contributing to the **Digital Logic   Repo**. 
+First off, welcome! Thank you for your interest in contributing to the **Digital Logic Repo**. 
 
-Whether you are fixing a typo, adding a complex sequential circuit, or writing a tutorial on a logic simplification method, your contributions help make learning digital logic accessible to everyone.
+Whether you are fixing a typo, adding a complex sequential circuit, or writing a tutorial on a logic simplification method, your contributions help make building and understanding digital logic accessible to everyone.
 
 This document is a comprehensive guide to help you submit new methods, circuits, and testbenches correctly.
 
@@ -33,9 +33,8 @@ We follow the standard GitHub "Fork and Pull" workflow:
 1. **Fork** the repository to your own GitHub account.
 2. **Clone** the project to your local machine:
    ```bash
-   git clone [https://github.com/your-username/digital-logic- -repo.git](https://github.com/your-username/digital-logic- -repo.git)
+   git clone [https://github.com/your-username/digital-logic-repo.git](https://github.com/your-username/digital-logic-repo.git)
 
-```
 
 3. **Create a Branch** for your feature or fix. Use a descriptive name:
 ```bash
@@ -185,11 +184,11 @@ When you open a PR, a template will automatically populate. Please fill it out c
 
 **Review Process:**
 
-*   maintainers will review your PR within 3-5 business days.
+* Project maintainers will review your PR within 3-5 business days.
 * We may request changes (e.g., "Please add comments explaining the state transitions"). Don't be discouraged! This is part of the engineering process.
 * Once approved, a maintainer will merge your PR into `main`.
 
-Thank you for contributing to the education of future computer engineers!
+Thank you for contributing to the community of digital logic engineers!
 
 ```
 
