@@ -35,6 +35,7 @@ We follow the standard GitHub "Fork and Pull" workflow:
    ```bash
    git clone [https://github.com/your-username/digital-logic-repo.git](https://github.com/your-username/digital-logic-repo.git)
 
+   ```
 
 3. **Create a Branch** for your feature or fix. Use a descriptive name:
 ```bash
