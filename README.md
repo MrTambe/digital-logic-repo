@@ -18,6 +18,18 @@ Learn how computers are built bottom-up, starting from two basic primitives (`AN
 
 ---
 
+## 💻 Software Reference
+
+All circuits and blueprints in this repository are designed for and tested in **Digital Logic Simulator** created by **Sebastian Lague**.
+
+| Resource | Link / Reference |
+| :--- | :--- |
+| **Simulator Software** | [Digital Logic Simulator on itch.io](https://sebastian.itch.io/digital-logic-sim) / [GitHub Repository](https://github.com/SebLague/Digital-Logic-Sim) |
+| **Video Breakdown** | [*Exploring How Computers Work* by Sebastian Lague](https://www.youtube.com/watch?v=QZwneEb6GVI) |
+| **RAM & CPU Video** | [*Building a Computer in Digital Logic Sim*](https://www.youtube.com/watch?v=HGkuRp5HfH8) |
+
+---
+
 ## 🌟 Key Features of This Repository
 
 * 🎬 **Video Demonstrations:** Every component folder includes `.mp4` video recordings showing signal propagation, pin toggling, and real-time execution.
