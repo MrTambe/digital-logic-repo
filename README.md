@@ -1,210 +1,189 @@
-\# 🖥️ Digital Logic Design: From Gates to a Full 8-Bit Computer
+# ⚡ The Digital Logic Handbook ⚡
+### *A Modular Component Blueprint & Guide for Sebastian Lague's Digital Logic Simulator*
 
+---
 
+<video src="Chapter_01_Introduction_And_Setup/media/simulator_walkthrough.mp4" controls="controls" style="max-width: 100%;">
+  Your browser does not support the video tag.
+</video>
 
-> \*\*An interactive, open-source course and component library built for Sebastian Lague's Digital Logic Simulator.\*\*
+---
 
+## 📖 Preface & Design Philosophy
 
+Welcome to the **Digital Logic Handbook**—an open-source, living textbook and circuit repository. 
 
-Welcome to the master repository. This is not just a collection of files; it is a \*\*comprehensive, interactive book\*\* designed to take you from the absolute basics of boolean logic (0s and 1s) to the complete architectural design of a functioning 8-bit computer. 
+Building digital hardware from scratch in Sebastian Lague's *Digital Logic Simulator* is deeply rewarding, but re-inventing basic sub-circuits every time you scale up gets tedious. This repository serves two purposes:
+1. **A Drop-In Component Library:** Copy and reference modular circuit designs directly into your own software projects to bypass repetitive gate layout.
+2. **A Progressive Architectural Textbook:** Learn how computers are built bottom-up, starting from two basic primitives (`AND` and `NOT` gates) and scaling step-by-step to an 8-bit calculator, a full-fledged 8-bit CPU, and eventually 16-bit, 32-bit, and 64-bit architectures.
 
+---
 
+## 🌟 Key Features of This Repository
 
-Whether you are a beginner trying to understand how an `AND` gate works, or an advanced engineer looking for highly optimized, low-propagation-delay carry lookahead adders, you will find it here.
+* 🎬 **Video-First Documentation:** Every component contains live `.mp4` video recordings showing signal propagation, inputs toggling, and outputs responding in real time.
+* 📊 **Compact Truth Tables:** Standardized 5x2 sub-table formats save vertical space while displaying complete input-output relationships.
+* 🔀 **Multiple Design Methods:** Complex components feature multiple sub-folders (e.g., `Method_01_Ripple_Carry` vs. `Method_02_Carry_Lookahead`) so you can choose between beginner readability or high-speed optimization.
+* 🧱 **Modular Tier Scaling:** Every sub-circuit is designed to be saved as a custom chip and plugged cleanly into higher-level chapters.
 
+---
 
+## 📚 Master Index / Table of Contents
 
-\---
+### 🟢 Chapter 01: Introduction & Simulator Mechanics
+* [1.0 Welcome & Architecture Roadmap](Chapter_01_Introduction_And_Setup/1.0_Welcome_And_Course_Overview.md)
+* [1.1 Sebastian Lague Simulator Mechanics Guide](Chapter_01_Introduction_And_Setup/1.1_Sebastian_Lague_Simulator_Guide.md)
+* [1.2 How to Read Compact Truth Tables & Signal Schematics](Chapter_01_Introduction_And_Setup/1.2_How_To_Read_Compact_Truth_Tables.md)
 
+---
 
+### 🟢 Chapter 02: Primitive Logic Gates
+> *Building all fundamental logic operations strictly from starting AND and NOT primitives.*
 
-\## 📖 How to Read This "Book"
+* **[2.1 NOT Gate (Inverter)](Chapter_02_Primitive_Gates/2.1_NOT_Gate/)** — *Signal inversion*
+* **[2.2 AND Gate](Chapter_02_Primitive_Gates/2.2_AND_Gate/)** — *Conjunction logic*
+* **[2.3 OR Gate](Chapter_02_Primitive_Gates/2.3_OR_Gate/)**
+  * 🔹 [Method 01: Basic NAND-Derived](Chapter_02_Primitive_Gates/2.3_OR_Gate/Method_01_Basic_NAND_Derived/) — *Standard Demorgan build*
+  * ⚡ [Method 02: Low Propagation Delay](Chapter_02_Primitive_Gates/2.3_OR_Gate/Method_02_Low_Propagation_Delay/) — *Optimized gate depth*
+* **[2.4 NAND Gate](Chapter_02_Primitive_Gates/2.4_NAND_Gate/)** — *Universal logic gate*
+* **[2.5 NOR Gate](Chapter_02_Primitive_Gates/2.5_NOR_Gate/)** — *Inverted OR gate*
+* **[2.6 XOR Gate (Exclusive OR)](Chapter_02_Primitive_Gates/2.6_XOR_Gate/)** — *Difference detector & addition foundation*
+* **[2.7 XNOR Gate](Chapter_02_Primitive_Gates/2.7_XNOR_Gate/)** — *Equality detector*
 
+---
 
+### 🟡 Chapter 03: Combinational Logic & Data Routing
+> *Directing, switching, and translating data streams without clock memory.*
 
-Every component in this repository has its own dedicated chapter and sub-directory. We have moved away from heavy, boring text blocks. Instead, inside each chapter you will find:
+* **3.1 Multiplexers (MUX)**
+  * [3.1.1 Basic 2-to-1 MUX](Chapter_03_Combinational_Logic/3.1_Multiplexers_MUX/3.1.1_Basic_2to1_MUX/)
+    * 🔹 [Method 01: Standard Logic Gates](Chapter_03_Combinational_Logic/3.1_Multiplexers_MUX/3.1.1_Basic_2to1_MUX/Method_01_Standard_Logic_Gates/)
+    * ⚡ [Method 02: Tristate-Optimized Routing](Chapter_03_Combinational_Logic/3.1_Multiplexers_MUX/3.1.1_Basic_2to1_MUX/Method_02_Tristate_Optimized/)
+  * [3.1.2 Cascaded 4-to-1 MUX](Chapter_03_Combinational_Logic/3.1_Multiplexers_MUX/3.1.2_Cascaded_4to1_MUX/)
+  * [3.1.3 8-Bit Wide Bus MUX](Chapter_03_Combinational_Logic/3.1_Multiplexers_MUX/3.1.3_8Bit_Wide_Bus_MUX/)
+* **[3.2 Demultiplexers (DEMUX)](Chapter_03_Combinational_Logic/3.2_Demultiplexers_DEMUX/)** — *Single line to multiple channel dispatch*
+* **[3.3 Decoders (2-to-4, 3-to-8)](Chapter_03_Combinational_Logic/3.3_Decoders/)** — *Memory line selection & control line decoding*
+* **[3.4 Encoders & Priority Encoders](Chapter_03_Combinational_Logic/3.4_Encoders_And_Priority_Encoders/)** — *Active line conversion to binary address*
 
+---
 
+### 🟠 Chapter 04: Arithmetic & Logic Unit (ALU)
+> *The mathematical engine: Binary addition, subtraction, comparison, and bitwise manipulation.*
 
-1\. \*\*Deep-Dive Theory:\*\* The \*why\* and \*how\* behind the circuit, written clearly by industry veterans.
+* **[4.1 Half Adder](Chapter_04_Arithmetic_Logic_Unit/4.1_Half_Adder/)** — *Sum & Carry out without Carry-In*
+* **[4.2 Full Adder](Chapter_04_Arithmetic_Logic_Unit/4.2_Full_Adder/)** — *3-bit addition building block*
+* **4.3 8-Bit Adders**
+  * 🔹 [Method 01: Ripple Carry Adder](Chapter_04_Arithmetic_Logic_Unit/4.3_8Bit_Adder/Method_01_Ripple_Carry_Beginner/) — *Beginner design, linear delay*
+  * ⚡ [Method 02: Carry Lookahead Adder](Chapter_04_Arithmetic_Logic_Unit/4.3_8Bit_Adder/Method_02_Carry_Lookahead_Advanced/) — *High-speed parallel carry computation*
+* **[4.4 8-Bit Subtractor (2's Complement)](Chapter_04_Arithmetic_Logic_Unit/4.4_8Bit_Subtractor_Twos_Complement/)** — *Invert and Add-1 subtraction core*
+* **[4.5 8-Bit Magnitude Comparator](Chapter_04_Arithmetic_Logic_Unit/4.5_8Bit_Magnitude_Comparator/)** — *Greater-Than, Less-Than, Equal-To evaluation*
+* **4.6 Full 8-Bit ALU Sub-System**
+  * 🔹 [Design 01: Basic Calculator ALU](Chapter_04_Arithmetic_Logic_Unit/4.6_Full_8Bit_ALU/Design_01_Basic_Calculator_ALU/) — *ADD, SUB, AND, OR functions*
+  * ⚡ [Design 02: Extended Flag ALU](Chapter_04_Arithmetic_Logic_Unit/4.6_Full_8Bit_ALU/Design_02_Extended_Flag_ALU/) — *Includes Zero (Z), Carry (C), and Overflow (V) status flags*
 
-2\. \*\*Compact Truth Tables:\*\* 5x2 formatted tables to quickly reference input/output states without scrolling for days.
+---
 
-3\. \*\*Multiple Design Methods:\*\* Because in digital logic, there is rarely just one way to build something. We provide the "Beginner/Readable" method and the "Optimized/High-Speed" method.
+### 🔵 Chapter 05: Sequential Logic & Memory Systems
+> *Introducing feedback loops, clocks, and state preservation.*
 
-4\. \*\*Live Video Demonstrations:\*\* Embedded `.mp4` files showing the circuit running live in the simulator. 
+* **[5.1 SR Latch](Chapter_05_Sequential_Logic_And_Memory/5.1_SR_Latch/)** — *NOR/NAND cross-coupled memory*
+* **[5.2 D Latch](Chapter_05_Sequential_Logic_And_Memory/5.2_D_Latch/)** — *Gated data storage*
+* **[5.3 Edge-Triggered D Flip-Flop](Chapter_05_Sequential_Logic_And_Memory/5.3_Edge_Triggered_D_FlipFlop/)** — *Single clock cycle state change*
+* **5.4 8-Bit Registers**
+  * 🔹 [Method 01: Standard D Flip-Flop Array](Chapter_05_Sequential_Logic_And_Memory/5.4_8Bit_Register/Method_01_Standard_D_FlipFlop_Array/)
+  * ⚡ [Method 02: Gated Clock Enable Register](Chapter_05_Sequential_Logic_And_Memory/5.4_8Bit_Register/Method_02_Gated_Clock_Enable/)
+* **[5.5 8-Bit Shift Register](Chapter_05_Sequential_Logic_And_Memory/5.5_Shift_Register_8Bit/)** — *Serial-to-Parallel & bit-shift arithmetic*
+* **[5.6 1-Bit RAM Cell](Chapter_05_Sequential_Logic_And_Memory/5.6_RAM_Cell_1Bit/)** — *Selectable read/write matrix node*
+* **[5.7 16-Byte RAM Bank](Chapter_05_Sequential_Logic_And_Memory/5.7_16Byte_RAM_Bank/)** — *Matrix decoding for byte storage*
 
+---
 
+### 🟣 Chapter 06: Display & I/O Modules
+> *Interfacing binary state data with human-readable outputs.*
 
-\---
+* **[6.1 Hexadecimal to 7-Segment Decoder](Chapter_06_Display_And_IO_Modules/6.1_Hex_To_7Segment_Decoder/)** — *Direct 4-bit to 0-F digit driving*
+* **6.2 Binary to BCD (Double Dabble Algorithm)**
+  * 🔹 [Method 01: Combinational Shift-Add-3](Chapter_06_Display_And_IO_Modules/6.2_Binary_To_BCD_Double_Dabble/Method_01_Combinational_Shift_Add3/) — *Pure gate cascade*
+  * ⚡ [Method 02: Sequential Clocked Dabble](Chapter_06_Display_And_IO_Modules/6.2_Binary_To_BCD_Double_Dabble/Method_02_Sequential_Clocked_Dabble/) — *Iterative register shift*
+* **[6.3 3-Digit Base-10 Display Driver](Chapter_06_Display_And_IO_Modules/6.3_3Digit_Base10_Display_Driver/)** — *Complete 0-255 output module*
 
+---
 
+### 🔴 Chapter 07: Integrated 8-Bit Calculator System
+> *Combining ALU, Data Bus, Registers, and BCD Displays into a functional desktop calculator.*
 
-\## 🚀 Getting Started
+* **[7.1 Control Unit & Clock Generator](Chapter_07_8Bit_Calculator_System/7.1_Control_Unit_And_Clock_Generator/)** — *State machine step counter*
+* **[7.2 Bus Routing & Tri-State System](Chapter_07_8Bit_Calculator_System/7.2_Bus_Routing_And_TriState_System/)** — *Shared data line isolation*
+* **[7.3 Full Integrated Calculator Assembly](Chapter_07_8Bit_Calculator_System/)** — *Master integration chapter*
 
+---
 
+### 🟤 Chapter 08: Control Logic & Microcode
+* **[8.1 Instruction Decoder](Chapter_08_Control_Logic_And_Microcode/8.1_Instruction_Decoder/)** — *Opcode demuxing*
+* **[8.2 Microcode ROM Matrix](Chapter_08_Control_Logic_And_Microcode/8.2_Microcode_ROM_Matrix/)** — *Control signal lookup tables*
 
-1\. \*\*Download the Simulator:\*\* If you haven't already, grab \[Sebastian Lague's Digital Logic Simulator](https://github.com/SebLague/Digital-Logic-Sim).
+---
 
-2\. \*\*Navigate the Index:\*\* Use the Table of Contents below to jump straight into a chapter.
+### ⚪ Chapter 09: System Bus Architecture & Timing
+* **[9.1 Shared System Bus & Tri-State Buffers](Chapter_09_Bus_Architecture_And_Timing/9.1_Shared_System_Bus/)** — *Preventing signal contention*
 
-3\. \*\*Replicate \& Experiment:\*\* Watch the embedded videos, read the theory, and try to build the components yourself. 
+---
 
+### 🟣 Chapter 10: Full-Fledged 8-Bit Computer
+> *A complete general-purpose stored-program computer architecture.*
 
+* **[10.1 Fetch-Decode-Execute Cycle Unit](Chapter_10_Full_Fledged_8Bit_Computer/10.1_Fetch_Decode_Execute_Cycle/)**
+* **[10.2 Program Counter (PC) & Memory Address Register (MAR)](Chapter_10_Full_Fledged_8Bit_Computer/10.2_Program_Counter_And_Memory_Mapper/)**
+* **[10.3 Integrated Execution Computer Unit](Chapter_10_Full_Fledged_8Bit_Computer/)**
 
-\---
+---
 
+### 🚀 Scaling Beyond (Future Chapters Roadmap)
+```text
+├── Chapter_11_To_20  -> 16-Bit Architecture & Expanded Instruction Set
+├── Chapter_21_To_40  -> 32-Bit RISC-style CPU Architecture & Pipelining
+└── Chapter_41_To_100 -> 64-Bit System Design, Floating Point Units (FPU), & Cache Memory
 
 
-\## 📚 Table of Contents
+---
 
+## 🛠️ How to Read & Use This Book
 
+### 1. Reading Compact Truth Tables
 
-\### Part I: The Fundamentals
+Instead of long, single-column truth tables that waste screen real estate, components in this repository use **5x2 compact truth tables**:
 
-\* \*\*\[Chapter 01: Introduction \& Setup](./Chapter\_01\_Introduction\_And\_Setup/)\*\*
+| Inputs | Output | Inputs | Output |
+| --- | --- | --- | --- |
+| **A  B** | **O** | **A  B** | **O** |
+| 0  0 | 0 | 1  0 | 0 |
+| 0  1 | 0 | 1  1 | 1 |
 
-&#x20; \* 1.0 Welcome \& Course Overview
+### 2. Viewing Live Video Demos
 
-&#x20; \* 1.1 Sebastian Lague Simulator Guide
+Every component directory contains a `media/` folder with an `.mp4` video. On GitHub, these play inline directly inside your browser so you can watch signal timing and pin toggles in action.
 
-&#x20; \* 1.2 How to Read Compact Truth Tables
+### 3. Replicating Designs
 
-\* \*\*\[Chapter 02: Primitive Gates](./Chapter\_02\_Primitive\_Gates/)\*\*
+Each sub-folder provides:
 
-&#x20; \* 2.1 NOT Gate
+1. High-level mathematical definition.
+2. Signal delay and gate count breakdown.
+3. Wire-by-wire connection breakdown for easy manual placement in Sebastian Lague's simulator.
 
-&#x20; \* 2.2 AND Gate
+---
 
-&#x20; \* 2.3 OR Gate \*(Derived vs. Optimized)\*
+## 🤝 Community & Contributions
 
-&#x20; \* 2.4 NAND Gate
+Got an idea for a faster carry chain? Designed a custom 64-bit component?
 
-&#x20; \* 2.5 NOR Gate
+* Read our [CONTRIBUTING.md](https://www.google.com/search?q=CONTRIBUTING.md) guide to submit new circuits, alternative methods, or documentation updates.
+* Check out the [IDEAS_AND_REQUESTS.md](https://www.google.com/search?q=IDEAS_AND_REQUESTS.md) board to see what components are currently requested by the community.
 
-&#x20; \* 2.6 XOR \& XNOR Gates
+---
 
+*Happy wiring! Let's build a computer.* 🔌💡
 
+```
 
-\### Part II: Traffic Control \& Routing
-
-\* \*\*\[Chapter 03: Combinational Logic](./Chapter\_03\_Combinational\_Logic/)\*\*
-
-&#x20; \* 3.1 Multiplexers (MUX) \*(2-to-1 up to 8-Bit Wide Buses)\*
-
-&#x20; \* 3.2 Demultiplexers (DEMUX)
-
-&#x20; \* 3.3 Decoders
-
-&#x20; \* 3.4 Encoders \& Priority Encoders
-
-
-
-\### Part III: Doing The Math
-
-\* \*\*\[Chapter 04: Arithmetic Logic Unit (ALU)](./Chapter\_04\_Arithmetic\_Logic\_Unit/)\*\*
-
-&#x20; \* 4.1 Half Adder \& Full Adder
-
-&#x20; \* 4.2 8-Bit Adder \*(Ripple Carry vs. Carry Lookahead)\*
-
-&#x20; \* 4.3 8-Bit Two's Complement Subtractor
-
-&#x20; \* 4.4 8-Bit Magnitude Comparator
-
-&#x20; \* 4.5 The Full 8-Bit ALU \*(Basic vs. Extended Flag Design)\*
-
-
-
-\### Part IV: Memory \& State
-
-\* \*\*\[Chapter 05: Sequential Logic \& Memory](./Chapter\_05\_Sequential\_Logic\_And\_Memory/)\*\*
-
-&#x20; \* 5.1 SR Latch \& D Latch
-
-&#x20; \* 5.2 Edge-Triggered D Flip-Flop
-
-&#x20; \* 5.3 8-Bit Register \*(Standard vs. Gated Clock)\*
-
-&#x20; \* 5.4 8-Bit Shift Register
-
-&#x20; \* 5.5 1-Bit RAM Cell to 16-Byte RAM Bank
-
-
-
-\### Part V: Human Interfaces
-
-\* \*\*\[Chapter 06: Display \& I/O Modules](./Chapter\_06\_Display\_And\_IO\_Modules/)\*\*
-
-&#x20; \* 6.1 Hex to 7-Segment Decoder
-
-&#x20; \* 6.2 Binary to BCD (Double Dabble Algorithm)
-
-&#x20; \* 6.3 3-Digit Base-10 Display Driver
-
-
-
-\### Part VI: The Architecture
-
-\* \*\*\[Chapter 07: 8-Bit Calculator System](./Chapter\_07\_8Bit\_Calculator\_System/)\*\*
-
-&#x20; \* 7.1 Control Unit \& Clock Generator
-
-&#x20; \* 7.2 Bus Routing \& Tri-State System
-
-\* \*\*\[Chapter 08: Control Logic \& Microcode](./Chapter\_08\_Control\_Logic\_And\_Microcode/)\*\*
-
-&#x20; \* 8.1 Instruction Decoder
-
-&#x20; \* 8.2 Microcode ROM Matrix
-
-\* \*\*\[Chapter 09: Bus Architecture \& Timing](./Chapter\_09\_Bus\_Architecture\_And\_Timing/)\*\*
-
-&#x20; \* 9.1 Shared System Bus Mechanics
-
-\* \*\*\[Chapter 10: Full-Fledged 8-Bit Computer](./Chapter\_10\_Full\_Fledged\_8Bit\_Computer/)\*\*
-
-&#x20; \* 10.1 Fetch-Decode-Execute Cycle
-
-&#x20; \* 10.2 Program Counter \& Memory Mapper
-
-&#x20; \* 10.3 Integrated Execution Unit
-
-
-
-> \*Note: Chapters 11 through 100+ detailing 16-bit, 32-bit, and 64-bit architectures are currently in development. See `IDEAS\_AND\_REQUESTS.md` to vote on the roadmap.\*
-
-
-
-\---
-
-
-
-\## 🤝 How to Contribute
-
-
-
-This is a living, breathing course. We want your optimizations, your alternative designs, and your brain-power. 
-
-
-
-Found a way to shave 2 ticks off a propagation delay? Built a component we don't have yet? 
-
-1\. Check our \*\*\[CONTRIBUTING.md](./CONTRIBUTING.md)\*\* guide to see how to format your chapter and truth tables.
-
-2\. Submit a PR using the templates in `.github/ISSUE\_TEMPLATE/`.
-
-3\. Drop your component wishlists in \*\*\[IDEAS\_AND\_REQUESTS.md](./IDEAS\_AND\_REQUESTS.md)\*\*.
-
-
-
-\---
-
-
-
-\## 📜 License
-
-
-
-This repository is open-sourced under the MIT License. You are free to copy, modify, distribute, and use these designs in your own educational or personal projects. See the \[LICENSE](./LICENSE) file for full details.
-
+```
