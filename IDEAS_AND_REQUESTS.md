@@ -1,9 +1,3 @@
-Here is a clean, structured template for your `IDEAS\_AND\_REQUESTS.md` file. You can drop this directly into your repository to help users submit and track new features, enhancements, and project ideas.
-
-
-
-```markdown
-
 \# 💡 Ideas and Feature Requests
 
 
@@ -78,7 +72,6 @@ When submitting a new idea via the Issues tab, please try to structure it like t
 
 
 
-```
 
 
 
@@ -172,11 +165,4 @@ If you see an idea in the \*\*Under Review\*\* or \*\*Planned\*\* sections and w
 
 Please read our \[`CONTRIBUTING.md`](https://www.google.com/search?q=CONTRIBUTING.md) before getting started.
 
-
-
-```
-
-
-
-```
 
