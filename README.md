@@ -9,13 +9,18 @@
 
 ---
 
-## 📖 Preface & Design Philosophy
+A Progressive Architectural Textbook: Learn how computers are built bottom-up, starting from two basic primitives (`AND` and `NOT` gates) and scaling step-by-step to an 8-bit calculator, a full-fledged 8-bit CPU, and eventually 16-bit, 32-bit, and 64-bit architectures.
 
-Welcome to the **Digital Logic Handbook**—an open-source, living textbook and circuit repository. 
+This repository serves as an information hub and architectural reference to find various digital logic component designs, schematics, and timing breakdowns.
 
-Building digital hardware from scratch in Sebastian Lague's *Digital Logic Simulator* is deeply rewarding, but re-inventing basic sub-circuits every time you scale up gets tedious. This repository serves two purposes:
-1. **A Drop-In Component Library:** Copy and reference modular circuit designs directly into your own software projects to bypass repetitive gate layout.
-2. **A Progressive Architectural Textbook:** Learn how computers are built bottom-up, starting from two basic primitives (`AND` and `NOT` gates) and scaling step-by-step to an 8-bit calculator, a full-fledged 8-bit CPU, and eventually 16-bit, 32-bit, and 64-bit architectures.
+---
+
+## 🌟 Key Features of This Repository
+
+* 🎬 **Video-First Documentation:** Every component contains live `.mp4` video recordings showing signal propagation, inputs toggling, and outputs responding in real time.
+* 📊 **Compact Truth Tables:** Standardized 5x2 sub-table formats save vertical space while displaying complete input-output relationships.
+* 🔀 **Multiple Design Methods:** Complex components feature multiple sub-folders (e.g., `Method_01_Ripple_Carry` vs. `Method_02_Carry_Lookahead`) so you can explore beginner readability vs. high-speed optimization.
+* 🧱 **Modular Tier Scaling:** Every sub-circuit shows how lower-level logic gates connect and scale cleanly into higher-level system blocks.
 
 ---
 
@@ -131,38 +136,13 @@ Building digital hardware from scratch in Sebastian Lague's *Digital Logic Simul
 
 ### 🚀 Scaling Beyond (Future Chapters Roadmap)
 
+```text
 ├── Chapter_11_To_20  -> 16-Bit Architecture & Expanded Instruction Set
 ├── Chapter_21_To_40  -> 32-Bit RISC-style CPU Architecture & Pipelining
 └── Chapter_41_To_100 -> 64-Bit System Design, Floating Point Units (FPU), & Cache Memory
 
+```
 
----
-
-## 🛠️ How to Read & Use This Book
-
-### 1. Reading Compact Truth Tables
-
-Instead of long, single-column truth tables that waste screen real estate, components in this repository use **5x2 compact truth tables**:
-
-| Inputs | Output | Inputs | Output |
-| --- | --- | --- | --- |
-| **A  B** | **O** | **A  B** | **O** |
-| 0  0 | 0 | 1  0 | 0 |
-| 0  1 | 0 | 1  1 | 1 |
-
-### 2. Viewing Live Video Demos
-
-Every component directory contains a `media/` folder with an `.mp4` video. On GitHub, these play inline directly inside your browser so you can watch signal timing and pin toggles in action.
-
-### 3. Replicating Designs
-
-Each sub-folder provides:
-
-1. High-level mathematical definition.
-2. Signal delay and gate count breakdown.
-3. Wire-by-wire connection breakdown for easy manual placement in Sebastian Lague's simulator.
-
----
 
 ## 🤝 Community & Contributions
 
@@ -174,3 +154,7 @@ Got an idea for a faster carry chain? Designed a custom 64-bit component?
 ---
 
 *Happy wiring! Let's build a computer.* 🔌💡
+
+```
+
+```
