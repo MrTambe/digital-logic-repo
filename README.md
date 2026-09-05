@@ -147,13 +147,9 @@ Learn how computers are built bottom-up, starting from two basic primitives (`AN
 
 Contributions, circuit optimizations, and documentation fixes are welcome!
 
-* Read our [CONTRIBUTING.md](https://www.google.com/search?q=CONTRIBUTING.md) guide to submit new component designs, optimized methods, or updates.
-* Check out the [IDEAS_AND_REQUESTS.md](https://www.google.com/search?q=IDEAS_AND_REQUESTS.md) board to see what circuits are currently requested.
+* Read our [CONTRIBUTING.md](https://github.com/MrTambe/digital-logic-repo/blob/main/CONTRIBUTING.md) guide to submit new component designs, optimized methods, or updates.
+* Check out the [IDEAS_AND_REQUESTS.md](https://github.com/MrTambe/digital-logic-repo/blob/main/IDEAS_AND_REQUESTS.md) board to see what circuits are currently requested.
 
 ---
 
 *Happy wiring! Let's build a computer.* 🔌💡
-
-
-
-```
