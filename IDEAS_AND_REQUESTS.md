@@ -1,168 +1,92 @@
-\# 💡 Ideas and Feature Requests
+# 💡 Ideas & Component Requests
 
+Welcome to the **Ideas & Component Requests** board! 
 
+This page serves as a community wishlist for new circuit designs, architectural optimizations, and documentation requests for the **Digital Logic Handbook** repository.
 
-Welcome to the Ideas and Requests board! We love community feedback and are always looking for ways to improve this project. 
+Whether you want to build a missing component, propose an optimization for an existing sub-circuit, or request a specific architecture for Sebastian Lague's *Digital Logic Simulator*, this is where to track it.
 
+---
 
+## 🚦 Request Status Legend
 
-Whether you have a spark of inspiration, a workflow improvement, or a massive feature request, this is the place to share it.
+* 🔴 **Unassigned:** Open for anyone to claim and build.
+* 🟡 **In Progress:** Currently being designed/tested by a contributor.
+* 🟢 **Completed:** Merged into the main repository.
 
+---
 
+## 📌 Active Request Board
 
-\---
+### 1. Primitive & Combinational Logic
+| Status | Topic / Feature | Description | Priority |
+| :---: | :--- | :--- | :---: |
+| 🔴 | **Transmission Gate MUX** | Alternative 2-to-1 MUX design using transmission gate logic to reduce gate depth. | Low |
+| 🔴 | **16-to-1 Multiplexer** | High-density 16-channel MUX for large bus selection. | Medium |
+| 🟡 | **Priority Encoder (8-to-3)** | Expanded priority encoder with active-low/active-high toggle pins. | Medium |
+| 🔴 | **Parity Generator & Checker** | 8-bit even/odd parity circuit for error detection. | Low |
 
+---
 
+### 2. Arithmetic & Mathematical Units
+| Status | Topic / Feature | Description | Priority |
+| :---: | :--- | :--- | :---: |
+| 🔴 | **8-Bit Array Multiplier** | Pure combinational 8x8 bit unsigned multiplier. | High |
+| 🔴 | **Booth's Algorithm Multiplier** | Sequential signed 8-bit multiplier using Booth's hardware algorithm. | High |
+| 🔴 | **8-Bit Restoring Divider** | Iterative hardware division circuit generating Quotient and Remainder. | High |
+| 🟡 | **Carry-Skip Adder (CSkA)** | Alternative 8-bit adder bridging Ripple Carry and Carry Lookahead performance. | Medium |
+| 🔴 | **Floating Point Unit (16-bit)** | Simplified IEEE-754 half-precision FPU (Adder/Subtractor module). | Critical |
 
-\## 📌 How to Submit an Idea
+---
 
+### 3. Sequential Logic & Memory Systems
+| Status | Topic / Feature | Description | Priority |
+| :---: | :--- | :--- | :---: |
+| 🔴 | **Dual-Port RAM (16x8)** | Memory bank allowing simultaneous read and write operations on separate buses. | High |
+| 🔴 | **Hardware Stack (LIFO)** | 8-byte Hardware Push/Pop stack register with Full and Empty flag outputs. | High |
+| 🔴 | **FIFO Circular Queue Buffer** | 16-byte Ring buffer with Read/Write pointers for I/O streaming. | Medium |
+| 🟡 | **JK Flip-Flop Master-Slave** | Pulse-triggered master-slave JK flip-flop module preventing race conditions. | Medium |
 
+---
 
-1\. \*\*Search First\*\*: Before submitting, please check the \[Issue Tracker](../../issues) or the board below to see if someone else has already suggested it. 
+### 4. Display, Input & I/O Interfacing
+| Status | Topic / Feature | Description | Priority |
+| :---: | :--- | :--- | :---: |
+| 🔴 | **Matrix Keypad Decoder** | 4x4 matrix keypad scanner with key-press debouncing circuit. | Medium |
+| 🔴 | **ASCII Character Display Driver** | 7-bit ASCII decoder for driving alphanumeric dot-matrix displays. | Low |
+| 🔴 | **VGA Signal Generator (Concept)** | Basic horizontal/vertical sync pulse timing generator for display testing. | Low |
 
-2\. \*\*Use the Template\*\*: Open a new issue and use the "Feature Request" template (or copy the format provided below).
+---
 
-3\. \*\*Be Descriptive\*\*: The more context, examples, and use-cases you provide, the better we can understand and evaluate your idea.
+### 5. CPU Architecture & Control Logic
+| Status | Topic / Feature | Description | Priority |
+| :---: | :--- | :--- | :---: |
+| 🔴 | **Pipelined 8-Bit CPU Core** | 2-stage (Fetch-Execute) overlapped pipeline version of the Chapter 10 CPU. | Critical |
+| 🔴 | **Hardware Branch Predictor** | 1-bit dynamic branch history table for instruction prefetching. | High |
+| 🟡 | **Interrupt Controller (APIC)** | Priority interrupt handling unit with 4 vector inputs and acknowledge lines. | High |
 
-4\. \*\*Engage\*\*: Once submitted, maintainers or other community members might ask follow-up questions. Stay tuned to the thread!
+---
 
+## 🛠️ How to Claim an Open Request
 
+1. **Pick an Unassigned Item (🔴):** Find a request you want to work on.
+2. **Open an Issue:** Submit an issue titled `[Claim] - <Component Name>` to let others know you are building it.
+3. **Build & Test:** Implement the circuit in Sebastian Lague's simulator and create the documentation/media files.
+4. **Submit a PR:** Submit your pull request following our [CONTRIBUTING.md](CONTRIBUTING.md) process.
 
-\---
+---
 
+## 💡 How to Suggest a New Idea
 
+Have an idea for a component that isn't listed here?
 
-\## 📝 Feature Request Template
+1. **Open an Issue:** Use the issue template titled `[Idea] - <Your Idea Name>`.
+2. **Provide Details:**
+   * **Component Purpose:** What does the circuit do?
+   * **Category:** Which chapter or architecture level does it belong to?
+   * **Key Inputs & Outputs:** Pin definitions and bus widths.
+   * **Why it helps:** How it expands the handbook or improves existing builds.
 
-
-
-When submitting a new idea via the Issues tab, please try to structure it like this:
-
-
-
-```markdown
-
-\### 🚀 The Feature / Idea
-
-\[A clear and concise description of what the feature is.]
-
-
-
-\### 🎯 The Problem it Solves
-
-\[Is your feature request related to a problem? Ex: "I'm always frustrated when..."]
-
-
-
-\### 💡 Proposed Solution
-
-\[Describe how you think this should work or be implemented.]
-
-
-
-\### 🔄 Alternatives Considered
-
-\[A clear and concise description of any alternative solutions or features you've considered.]
-
-
-
-\### 📎 Additional Context
-
-\[Add any other context, screenshots, or mockups about the feature request here.]
-
-
-
-
-
-
-\---
-
-
-
-\## 🚦 Idea Status / Roadmap
-
-
-
-Below is a high-level view of major ideas and their current status. \*(Maintainers: Update this section periodically)\*
-
-
-
-\### 🔍 Under Review
-
-
-
-\*Ideas that have been submitted and are currently being discussed by the core team.\*
-
-
-
-\* \[Idea: Add Dark Mode support](https://www.google.com/search?q=%23) - \*Pending design review\*
-
-\* \[Idea: Integration with third-party API](https://www.google.com/search?q=%23) - \*Gathering community feedback\*
-
-
-
-\### 🗓️ Planned
-
-
-
-\*Great ideas that we intend to build, but haven't started yet.\*
-
-
-
-\* \[Feature: User Dashboard Analytics](https://www.google.com/search?q=%23) - \*Targeting v2.1\*
-
-\* \[Feature: Export data as CSV/JSON](https://www.google.com/search?q=%23) - \*Targeting v2.2\*
-
-
-
-\### 🚧 In Progress
-
-
-
-\*Features currently being actively developed.\*
-
-
-
-\* \[Feature: Role-based Access Control (RBAC)](https://www.google.com/search?q=%23) - \*See PR #42\*
-
-
-
-\### ✅ Implemented
-
-
-
-\*Recently completed requests!\*
-
-
-
-\* \~\~\[Feature: OAuth2 Login](https://www.google.com/search?q=%23)\~\~ - \*Shipped in v1.5\*
-
-
-
-\### 🛑 Parked / Out of Scope
-
-
-
-\*Ideas that are great, but don't align with the current vision or technical constraints.\*
-
-
-
-\* \[Idea: Build a native desktop app](https://www.google.com/search?q=%23) - \*Out of scope for this year, sticking to web-first.\*
-
-
-
-\---
-
-
-
-\## 🤝 Want to help build an idea?
-
-
-
-If you see an idea in the \*\*Under Review\*\* or \*\*Planned\*\* sections and want to take a crack at building it, please comment on the respective issue! We will happily assign it to you and guide you through the contribution process.
-
-
-
-Please read our \[`CONTRIBUTING.md`](https://www.google.com/search?q=CONTRIBUTING.md) before getting started.
-
+---
+*Got a question about a design layout? Feel free to start a discussion in the repository Issues page!*
 
