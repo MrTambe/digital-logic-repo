@@ -46,7 +46,7 @@ git checkout -b feat/add-carry-lookahead-adder
 
 4. **Develop** your circuit, testbench, or documentation.
 5. **Test** your logic to ensure it simulates correctly.
-6. **Commit** your changes following our [Commit Guidelines](https://www.google.com/search?q=%23-commit-guidelines).
+6. **Commit** your changes following our [Commit Guidelines](#-commit-guidelines).
 7. **Push** to your fork:
 ```bash
 git push origin feat/add-carry-lookahead-adder
@@ -190,7 +190,3 @@ When you open a PR, a template will automatically populate. Please fill it out c
 * Once approved, a maintainer will merge your PR into `main`.
 
 Thank you for contributing to the community of digital logic engineers!
-
-```
-
-```
