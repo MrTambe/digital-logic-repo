@@ -1,0 +1,61 @@
+# 🧭 1.0 Welcome & Architecture Roadmap
+
+Welcome to the **Digital Logic Handbook**. 
+
+If you are here, you have likely opened Sebastian Lague's *Digital Logic Simulator* and are looking at an empty grid, a battery, a switch, and a lightbulb. It can be daunting to figure out how those simple pieces can eventually run software.
+
+This handbook is designed to bridge that gap. We are going to map out exactly how to build a functioning, programmable computer from absolute scratch. 
+
+There is no "magic" here. Every complex component you will see—from memory banks to the Arithmetic Logic Unit (ALU)—is made of nothing but basic switches routing electricity.
+
+---
+
+## 🏗️ The "Bottom-Up" Philosophy
+
+The core philosophy of this handbook is **The Ladder of Abstraction**. 
+
+When building a computer, you cannot think about the entire machine at once; it is too complex. Instead, we build small, reliable blocks, understand exactly how they work, and then package them into custom "chips." Once a chip is packaged, we no longer need to think about the individual wires inside it. We only care about its inputs and outputs. 
+
+We will use those chips to build bigger chips, climbing the ladder of abstraction step-by-step.
+
+### The Rules of the Build:
+1. **Start Simple:** We begin with only two primitive gates: `AND` and `NOT`.
+2. **Never Skip a Step:** We will not use a complex component (like an Adder or a Register) until we have built it ourselves from lower-level gates.
+3. **Modular Design:** Everything we build is designed to be saved as a reusable chip to keep our workspace clean and our simulator running smoothly.
+
+---
+
+## 🗺️ The Architecture Roadmap
+
+Here is the exact path we will take to reach a full 8-bit computer architecture. Treat this as your map through the repository chapters.
+
+### 🧱 Level 1: The Primitives (Chapter 2)
+We start by manipulating raw signals. By combining `AND` and `NOT` gates, we will unlock the rest of the fundamental logic gates: `OR`, `NAND`, `NOR`, `XOR`, and `XNOR`. These are the foundational bricks of our entire machine.
+
+### 🔀 Level 2: Combinational Logic (Chapters 3 & 4)
+We will use our primitive gates to build circuits that route data and perform math.
+* **Routing:** Multiplexers (MUX) and Decoders will let us direct electrical signals exactly where we want them to go.
+* **Math:** We will build Adders, Subtractors, and Comparators, eventually packaging them into a complete **Arithmetic Logic Unit (ALU)**—the mathematical brain of the computer.
+
+### 🧠 Level 3: Sequential Logic & Memory (Chapter 5)
+Up to this point, our circuits will only react instantly to inputs. To build a computer, we need *memory*. By feeding outputs back into inputs (creating feedback loops), we will build Latches, Flip-Flops, Registers, and eventually a full Random Access Memory (RAM) bank.
+
+### 🖥️ Level 4: The Calculator (Chapters 6 & 7)
+Before building a fully programmable CPU, we will test our ALU and Registers by attaching them to 7-segment displays and a keypad. This creates a functional, hardwired 8-bit desktop calculator.
+
+### ⚙️ Level 5: The CPU & Control Logic (Chapters 8, 9, & 10)
+This is where it all comes together into a true computer.
+* We will implement a **System Bus** so all components can talk to each other without short-circuiting.
+* We will build a **Control Unit** and write **Microcode** to decode binary instructions.
+* We will finalize the **Fetch-Decode-Execute Cycle**, allowing the machine to read a program from memory and run it automatically.
+
+---
+
+## 🛠️ How to Navigate the Chapters
+
+As you move through the chapters, each folder will contain:
+1. **The Concept:** A brief, plain-English explanation of what the component does.
+2. **The Blueprint:** Wire-by-wire connection guides and logic diagrams so you can replicate the design in your simulator.
+3. **Video Demonstrations:** Short `.mp4` clips showing the component in action, toggling pins, and proving the logic works.
+
+Whenever you are ready, head over to **[1.1 Sebastian Lague Simulator Mechanics Guide](1.1_Sebastian_Lague_Simulator_Guide.md)** to learn the quirks, shortcuts, and limitations of the software before we start wiring!
