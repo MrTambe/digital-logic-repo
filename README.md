@@ -19,15 +19,6 @@ Building digital hardware from scratch in Sebastian Lague's *Digital Logic Simul
 
 ---
 
-## 🌟 Key Features of This Repository
-
-* 🎬 **Video-First Documentation:** Every component contains live `.mp4` video recordings showing signal propagation, inputs toggling, and outputs responding in real time.
-* 📊 **Compact Truth Tables:** Standardized 5x2 sub-table formats save vertical space while displaying complete input-output relationships.
-* 🔀 **Multiple Design Methods:** Complex components feature multiple sub-folders (e.g., `Method_01_Ripple_Carry` vs. `Method_02_Carry_Lookahead`) so you can choose between beginner readability or high-speed optimization.
-* 🧱 **Modular Tier Scaling:** Every sub-circuit is designed to be saved as a custom chip and plugged cleanly into higher-level chapters.
-
----
-
 ## 📚 Master Index / Table of Contents
 
 ### 🟢 Chapter 01: Introduction & Simulator Mechanics
@@ -139,7 +130,7 @@ Building digital hardware from scratch in Sebastian Lague's *Digital Logic Simul
 ---
 
 ### 🚀 Scaling Beyond (Future Chapters Roadmap)
-```text
+
 ├── Chapter_11_To_20  -> 16-Bit Architecture & Expanded Instruction Set
 ├── Chapter_21_To_40  -> 32-Bit RISC-style CPU Architecture & Pipelining
 └── Chapter_41_To_100 -> 64-Bit System Design, Floating Point Units (FPU), & Cache Memory
@@ -183,7 +174,3 @@ Got an idea for a faster carry chain? Designed a custom 64-bit component?
 ---
 
 *Happy wiring! Let's build a computer.* 🔌💡
-
-```
-
-```
