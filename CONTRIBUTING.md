@@ -1,150 +1,195 @@
-```markdown
-# 🌟 Contributing to the Digital Logic Course 🌟
+# ✨ Contributing to the Digital Logic Repository ✨
 
-First off, welcome! Thank you for your interest in contributing to the **Digital Logic Course Repository**. 
+First off, welcome! Thank you for your interest in contributing to the **Digital Logic   Repo**. 
 
-This repository is built as a living, open-source educational "book" for **Sebastian Lague's Digital Logic Simulator**. Whether you are fixing a typo, adding a complex sequential circuit, or writing a tutorial on a new optimization method, your contributions help make learning digital logic accessible to everyone.
+Whether you are fixing a typo, adding a complex sequential circuit, or writing a tutorial on a logic simplification method, your contributions help make learning digital logic accessible to everyone.
+
+This document is a comprehensive guide to help you submit new methods, circuits, and testbenches correctly.
 
 ---
 
 ## 📑 Table of Contents
 
-1. [📜 Code of Conduct](#-code-of-conduct)
-2. [📖 The "Book" Philosophy](#-the-book-philosophy)
-3. [🔍 What We Are Looking For](#-what-we-are-looking-for)
-4. [🛠️ How to Submit a New Circuit](#️-how-to-submit-a-new-circuit)
-5. [🎥 Media & Video Guidelines](#-media--video-guidelines)
-6. [🚀 Pull Request (PR) Process](#-pull-request-pr-process)
+1. [🤝 Code of Conduct](#-code-of-conduct)
+2. [🔄 Contribution Workflow](#-contribution-workflow)
+3. [🗂️ Repository Structure](#️-repository-structure)
+4. [🛠️ How to Submit New Circuits](#️-how-to-submit-new-circuits)
+5. [📝 How to Submit New Methods & Tutorials](#-how-to-submit-new-methods--tutorials)
+6. [✅ Testing & Validation Requirements](#-testing--validation-requirements)
+7. [💾 Commit Guidelines](#-commit-guidelines)
+8. [🚀 Pull Request (PR) Process](#-pull-request-pr-process)
 
 ---
 
-## 📜 Code of Conduct
-
-By participating in this project, you agree to maintain a respectful, inclusive, and collaborative environment. Constructive feedback on Pull Requests is highly encouraged; academic elitism is not. We are all here to learn and build cool computers! 🤝
-
----
-
-## 📖 The "Book" Philosophy
-
-Unlike standard code repositories, this project is structured like an **interactive textbook**. 
-
-> **Our Golden Rule:** 
-> *Do not just drop a circuit file and leave. Every component must have a beautifully formatted `README.md` that explains the theory, shows the truth table, and provides a live video demonstration.*
-
-*   **Readability First:** Text goes at the bottom. Start with a quick hook, the visual video demo, the truth table, and *then* the deep-dive text. 
-*   **Progressive Difficulty:** Chapters go from simple gates (Chapter 2) all the way up to full computer architectures (Chapter 10+). Put your contribution in the correct difficulty tier.
+## 🤝 Code of Conduct
+By participating in this project, you agree to abide by our Code of Conduct. We expect all contributors to maintain a respectful, inclusive, and collaborative environment. Constructive feedback on PRs is highly encouraged; academic elitism is not.
 
 ---
 
-## 🔍 What We Are Looking For
+## 🔄 Contribution Workflow
 
-We are actively accepting contributions for:
+We follow the standard GitHub "Fork and Pull" workflow:
 
-*   **🧩 New Components:** Missing logic gates, advanced ALU designs, new I/O drivers, or computer architecture components (16-bit, 32-bit, 64-bit).
-*   **⚡ Alternative Methods:** Did you find a way to build a circuit with fewer gates? Less propagation delay? Submit it as a new `Method_02_...` folder alongside the standard design!
-*   **📝 Documentation Fixes:** Typos, better explanations, or cleaner truth tables.
-
----
-
-## 🛠️ How to Submit a New Circuit
-
-If you have built a new component in the simulator, follow these steps to add it to the course:
-
-### Step 1: Fork & Clone
-Fork the repository to your GitHub account and clone it to your local machine.
-```bash
-git clone [https://github.com/your-username/digital-logic-course-repo.git](https://github.com/your-username/digital-logic-course-repo.git)
+1. **Fork** the repository to your own GitHub account.
+2. **Clone** the project to your local machine:
+   ```bash
+   git clone [https://github.com/your-username/digital-logic- -repo.git](https://github.com/your-username/digital-logic- -repo.git)
 
 ```
 
-### Step 2: Create a Branch
-
-Create a new branch for your circuit. Use a descriptive name!
-
+3. **Create a Branch** for your feature or fix. Use a descriptive name:
 ```bash
 git checkout -b feat/add-carry-lookahead-adder
 
 ```
 
-### Step 3: Create the Folder Structure
 
-Navigate to the correct Chapter and create a folder for your component. If there are multiple ways to build it, use the `Method_` subfolder structure.
-
-```text
-├── 4.3_8Bit_Adder/
-│   ├── Method_01_Ripple_Carry/
-│   │   ├── README.md
-│   │   ├── circuit.json
-│   │   └── media/
-│   │       └── demo.mp4
+4. **Develop** your circuit, testbench, or documentation.
+5. **Test** your logic to ensure it simulates correctly.
+6. **Commit** your changes following our [Commit Guidelines](https://www.google.com/search?q=%23-commit-guidelines).
+7. **Push** to your fork:
+```bash
+git push origin feat/add-carry-lookahead-adder
 
 ```
 
-### Step 4: Write the `README.md`
 
-Every circuit MUST have a local `README.md`. It should include:
+8. **Open a Pull Request** from your fork to the `main` branch of our repository.
 
-1. **A short introduction** (What does this chip do?)
-2. **Embedded Video Demo** (See media guidelines below).
-3. **The 5x2 Compact Truth Table** (Use the template in `/templates`).
-4. **In-depth Theory** (How does the wiring actually work? Why did you design it this way?)
+---
 
-### Step 5: Commit & Push
+## 🗂️ Repository Structure
 
-Commit your changes with a clear message and push to your fork.
+Before contributing, please familiarize yourself with the directory layout:
 
-```bash
-git commit -m "feat(Chapter 4): Added 8-Bit Carry Lookahead Adder method"
-git push origin feat/add-carry-lookahead-adder
+```text
+├── circuits/
+│   ├── combinational/    # Adders, Multiplexers, Decoders, Encoders, ALUs
+│   └── sequential/       # Flip-Flops, Counters, Registers, FSMs
+├── methods/              # Markdown tutorials (K-Maps, Quine-McCluskey, etc.)
+├── testbenches/          # Verilog/VHDL testbenches corresponding to circuits
+├── logisim_files/        # .circ files for visual learners
+└── assets/               # Images, GTKWave screenshots, truth tables
 
 ```
 
 ---
 
-## 🎥 Media & Video Guidelines
+## 🛠️ How to Submit New Circuits
 
-We prefer **live action over static images**. Whenever possible, record a short `.mp4` video showing you toggling the inputs in the simulator and the outputs lighting up.
+We accept circuit implementations in **Verilog (.v)**, **VHDL (.vhd)**, and **Logisim (.circ)**. To submit a new circuit, you must meet the following requirements:
 
-### 🎬 Video Rules:
+### 1. Naming Conventions
 
-* **Format:** `.mp4` only.
-* **Length:** Keep it under 60 seconds. Show the most important truth-table states.
-* **Framing:** Zoom in on the chip/circuit. Don't record your whole desktop.
+* File names must be `snake_case`.
+* Examples: `full_adder.v`, `d_flip_flop.vhd`, `mod_10_counter.circ`.
 
-### 🖼️ Embedding in Markdown:
+### 2. Required Files
 
-Do not use raw markdown links for videos. Use the HTML `<video>` tag so it plays seamlessly inside the GitHub book:
+Every new circuit submission **must** include:
 
-```html
-<video src="media/your_demo_video.mp4" controls="controls" style="max-width: 100%;">
-  Your browser does not support the video tag.
-</video>
+* The source file (e.g., `circuits/combinational/alu_4bit.v`).
+* A corresponding testbench (e.g., `testbenches/alu_4bit_tb.v`).
+* A local `README.md` inside the specific circuit's folder, or an update to the section's main README.
+
+### 3. Code Documentation
+
+Include a header block at the top of your source code:
+
+```verilog
+/*
+ * Module: 4-Bit ALU
+ * Author: [Your Name/Handle]
+ * Description: Performs AND, OR, ADD, and SUB operations.
+ * Inputs: A[3:0], B[3:0], opcode[1:0]
+ * Outputs: Result[3:0], CarryOut
+ */
 
 ```
+
+---
+
+## 📝 How to Submit New Methods & Tutorials
+
+Theoretical methods (e.g., Boolean algebra proofs, Karnaugh map walkthroughs, state reduction algorithms) live in the `/methods/` directory.
+
+### Guidelines for Markdown Tutorials:
+
+1. **Clear Objectives:** Start with a brief paragraph explaining what the method achieves.
+2. **Visual Aids:** Use standard Markdown tables for Truth Tables and State Tables.
+```markdown
+| A | B | Cin | Sum | Cout |
+|---|---|-----|-----|------|
+| 0 | 1 |  0  |  1  |  0   |
+
+```
+
+
+3. **Step-by-Step Logic:** Break down math or algorithms into numbered steps.
+4. **Math Formatting:** Use LaTeX formatting for Boolean algebra where supported, or standard text notation (e.g., `Y = A'B + AB'`).
+5. **Practical Example:** Every method must conclude with a worked-out example.
+
+---
+
+## ✅ Testing & Validation Requirements
+
+We do not accept broken circuits. You must prove your circuit works.
+
+### For Hardware Description Languages (Verilog/VHDL):
+
+1. **Write a Testbench:** Your testbench must cover edge cases, not just happy paths.
+2. **Include Assertions (Optional but Recommended):** Make your testbench self-checking using `$monitor` or `$display`.
+3. **Provide Proof:** In your Pull Request, include a screenshot of the waveform (from GTKWave, ModelSim, or Vivado) showing the successful simulation.
+
+### For Logisim:
+
+1. Ensure there are no floating pins (use pull-up/pull-down resistors or constants where necessary).
+2. Label all inputs and outputs clearly in the UI.
+3. Test all states before saving the `.circ` file.
+
+---
+
+## 💾 Commit Guidelines
+
+We enforce the [Conventional Commits](https://www.google.com/search?q=https://www.conventionalcommits.org/) standard to maintain a readable project history.
+
+**Format:** `<type>(<scope>): <subject>`
+
+**Allowed Types:**
+
+* `feat`: A new circuit, method, or tutorial.
+* `fix`: A bug fix in existing logic or typos in docs.
+* `docs`: Documentation only changes.
+* `test`: Adding missing testbenches.
+* `refactor`: Rewriting code without changing its behavior (e.g., structural to behavioral Verilog).
+
+**Examples:**
+
+* `feat(combinational): add 16-bit carry lookahead adder`
+* `docs(methods): add tutorial on Quine-McCluskey method`
+* `fix(sequential): resolve race condition in JK flip flop`
 
 ---
 
 ## 🚀 Pull Request (PR) Process
 
-Ready to submit? Head over to the main repository and open a Pull Request!
+When you open a PR, a template will automatically populate. Please fill it out completely.
 
-### ✅ PR Checklist (Make sure you can check these off):
+**PR Checklist (Make sure you can check these off):**
 
-* [ ] I have placed my component in the correct Chapter folder.
-* [ ] I have included the simulator save file (`circuit.json`).
-* [ ] I have written a detailed `README.md` following the book philosophy.
-* [ ] I have included a `.mp4` video demonstrating the circuit working.
-* [ ] I have included a Truth Table.
+* [ ] I have read the `CONTRIBUTING.md` guidelines.
+* [ ] My code follows the repository's naming conventions.
+* [ ] I have included a testbench for my circuit (if applicable).
+* [ ] I have verified that my testbench passes locally.
+* [ ] I have updated the documentation / READMEs to reflect my changes.
 
-### ⏱️ Review Process:
+**Review Process:**
 
-* Maintainers will review your PR within **3-5 business days**.
-* We might ask for tweaks (e.g., "Could you explain the wire routing in paragraph 2 a bit more?"). Don't be discouraged! This is how we make the book perfect.
-* Once approved, your circuit will be officially merged into the course! 🎉
+*   maintainers will review your PR within 3-5 business days.
+* We may request changes (e.g., "Please add comments explaining the state transitions"). Don't be discouraged! This is part of the engineering process.
+* Once approved, a maintainer will merge your PR into `main`.
 
----
-
-*Thank you for helping us build the ultimate digital logic guide! Happy wiring!* 🔌💡
+Thank you for contributing to the education of future computer engineers!
 
 ```
 
