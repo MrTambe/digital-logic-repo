@@ -50,7 +50,7 @@ All circuits and blueprints in this repository are designed for and tested in **
 > *Building all fundamental logic operations strictly from starting AND and NOT primitives.*
 
 * **[2.1 NOT Gate (Inverter)](Chapter_02_Primitive_Gates/2.1_NOT_Gate/)** — *Signal inversion*
-* **[2.2 AND Gate](Chapter_02_Primitive_Gates/2.2_AND_Gate/)** — *Conjunction logic*
+* **[2.2 AND Gate](Chapter 02 Primitive Gates/2.2 AND Gate/)** — *Conjunction logic*
 * **[2.3 OR Gate](Chapter_02_Primitive_Gates/2.3_OR_Gate/)**
   * 🔹 [Method 01: Basic NAND-Derived](Chapter_02_Primitive_Gates/2.3_OR_Gate/Method_01_Basic_NAND_Derived/) — *Standard DeMorgan build*
   * ⚡ [Method 02: Low Propagation Delay](Chapter_02_Primitive_Gates/2.3_OR_Gate/Method_02_Low_Propagation_Delay/) — *Optimized gate depth*
