@@ -41,7 +41,7 @@ All circuits and blueprints in this repository are designed for and tested in **
 ## 📚 Master Index / Table of Contents
 
 ### 🟢 Chapter 01: Introduction & Simulator Mechanics
-* [1.0 Welcome & Architecture Roadmap](Chapter_01_Introduction_And_Setup/1.0_Welcome_And_Course_Overview.md)
+* [1.0 Welcome & Architecture Roadmap](Chapter_01_Introduction_And_Setup/1.0_Welcome_&_Architecture_Roadmap.md)
 * [1.1 Sebastian Lague Simulator Mechanics Guide](Chapter_01_Introduction_And_Setup/1.1_Sebastian_Lague_Simulator_Guide.md)
 
 ---
