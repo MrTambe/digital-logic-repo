@@ -1,0 +1,67 @@
+```markdown
+# 🛑 2.1 NOT Gate (Inverter)
+
+The **NOT gate**, also known as an Inverter, is the simplest logic operation. It performs **Logical Negation**—meaning whatever signal enters the gate, the exact opposite signal comes out. 
+
+If the input is ON (`1`), the output is OFF (`0`). If the input is OFF (`0`), the output is ON (`1`).
+
+In Sebastian Lague's *Digital Logic Simulator*, the NOT gate is one of the two absolute foundational primitives (alongside the AND gate). You do not build this from smaller pieces; rather, every other component in this entire handbook is ultimately built using this block!
+
+---
+
+## 🎛️ Component Overview & Truth Table
+
+<table width="100%">
+  <tr>
+    <th width="60%" align="center">🎬 Live Demonstration</th>
+    <th width="40%" align="center">📊 Truth Table</th>
+  </tr>
+  <tr>
+    <td align="center" valign="middle">
+      <video src="media/not_gate_demo.mp4" controls="controls" style="width: 100%; border-radius: 8px;">
+        Your browser does not support the video tag.
+      </video>
+      <br>
+      <i>Notice how the output wire immediately lights up when the input switch is turned off.</i>
+    </td>
+    <td align="center" valign="middle">
+      <table style="width: 80%; text-align: center;">
+        <thead>
+          <tr>
+            <th style="text-align: center;">Input (A)</th>
+            <th style="text-align: center;">Output (Q)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>0</code></td>
+            <td><code>1</code></td>
+          </tr>
+          <tr>
+            <td><code>1</code></td>
+            <td><code>0</code></td>
+          </tr>
+        </tbody>
+      </table>
+      <br><br>
+      <b>Boolean Equation:</b><br> 
+      $Q = \overline{A}$ 
+    </td>
+  </tr>
+</table>
+
+---
+
+## 📐 Component Blueprint
+
+Because the NOT gate is a base primitive provided directly by the simulator's bottom toolbar, there is no internal sub-circuit to wire. However, keeping track of its specifications is critical for calculating delay in larger, more complex chips later on.
+
+* **Gate Depth (Propagation Delay):** `1 Tick`
+* **Input Pins:** `1` (Data In)
+* **Output Pins:** `1` (Inverted Data Out)
+* **Dependencies:** None (Primitive Block)
+
+### 📝 Design Notes
+When optimizing complex circuits later (like ALUs or Adders), removing unnecessary NOT gates is the easiest way to speed up your processor. Two NOT gates placed in a row cancel each other out (an effect known as double negation: $ \overline{\overline{A}} = A $) and simply waste 2 ticks of clock cycle time without changing the data!
+
+```
