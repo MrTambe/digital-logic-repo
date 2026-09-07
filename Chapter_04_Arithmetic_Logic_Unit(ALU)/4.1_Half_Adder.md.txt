@@ -1,0 +1,129 @@
+# ➕ 4.1 Half Adders
+
+A **Half Adder** is the simplest and most fundamental digital arithmetic circuit. Its primary function is to add two single-bit binary numbers ($A$ and $B$) together. 
+
+When you add two binary bits, the result can range from `0` to `2` (in decimal). Because binary can only represent a maximum of `1` in a single column, an addition that results in `2` (binary `10`) requires two output wires: one for the **Sum** ($S$) and one for the **Carry** ($C$) to pass the overflow to the next column.
+
+It is called a "Half" Adder because it lacks the ability to accept a "Carry-In" signal from a previous addition. This limitation restricts it to adding only the very first (least significant) column of a multi-bit number.
+
+---
+
+## 🧮 4.1.1 Truth Table & Boolean Logic
+
+To build the circuit, we first map out every possible combination of adding two 1-bit numbers: `0+0`, `0+1`, `1+0`, and `1+1`.
+
+<table width="100%">
+  <tr>
+    <th width="35%" align="center">🎬 Conceptual Operation</th>
+    <th width="65%" align="center">📊 Truth Table & Logic Equations</th>
+  </tr>
+  <tr>
+    <td align="center" valign="top" style="padding: 10px;">
+      <img src="media/half_adder_block_diagram.png" alt="Half Adder Block Diagram" style="width: 100%; border-radius: 8px;" />
+      <br><br>
+      <i style="font-size: 0.9em;">The "Black Box" view: Two inputs ($A, B$) enter the arithmetic unit, producing a Carry bit and a Sum bit.</i>
+    </td>
+    <td align="center" valign="top" style="padding: 10px;">
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th style="border-bottom: 2px solid #ccc; padding: 6px;">Input $A$</th>
+            <th style="border-bottom: 2px solid #ccc; padding: 6px;">Input $B$</th>
+            <th style="border-bottom: 2px solid #ccc; padding: 6px;">Carry ($C$)</th>
+            <th style="border-bottom: 2px solid #ccc; padding: 6px;">Sum ($S$)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 6px;"><code>0</code></td>
+            <td style="padding: 6px;"><code>0</code></td>
+            <td style="padding: 6px; background-color: rgba(255, 0, 0, 0.05);"><b><code>0</code></b></td>
+            <td style="padding: 6px; background-color: rgba(0, 0, 255, 0.05);"><b><code>0</code></b></td>
+          </tr>
+          <tr>
+            <td style="padding: 6px;"><code>0</code></td>
+            <td style="padding: 6px;"><code>1</code></td>
+            <td style="padding: 6px; background-color: rgba(255, 0, 0, 0.05);"><b><code>0</code></b></td>
+            <td style="padding: 6px; background-color: rgba(0, 0, 255, 0.05);"><b><code>1</code></b></td>
+          </tr>
+          <tr>
+            <td style="padding: 6px;"><code>1</code></td>
+            <td style="padding: 6px;"><code>0</code></td>
+            <td style="padding: 6px; background-color: rgba(255, 0, 0, 0.05);"><b><code>0</code></b></td>
+            <td style="padding: 6px; background-color: rgba(0, 0, 255, 0.05);"><b><code>1</code></b></td>
+          </tr>
+          <tr>
+            <td style="padding: 6px;"><code>1</code></td>
+            <td style="padding: 6px;"><code>1</code></td>
+            <td style="padding: 6px; background-color: rgba(255, 0, 0, 0.1);"><b><code>1</code></b></td>
+            <td style="padding: 6px; background-color: rgba(0, 0, 255, 0.05);"><b><code>0</code></b></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="text-align: left; margin-top: 15px; font-size: 0.95em;">
+        <b>Deriving the Logic:</b><br>
+        Notice the <b>Sum ($S$)</b> column is exactly `1` only when the inputs are <i>different</i>. This perfectly matches an Exclusive-OR gate.<br>
+        $S = A \oplus B$<br><br>
+        Notice the <b>Carry ($C$)</b> column is exactly `1` <i>only</i> when both $A$ and $B$ are `1`. This perfectly matches an AND gate.<br>
+        $C = A \cdot B$
+      </div>
+    </td>
+  </tr>
+</table>
+
+---
+
+## 🛠️ 4.1.2 Hardware Implementation
+
+Because the Boolean logic simplifies so elegantly, constructing a Half Adder at the transistor or gate level is incredibly efficient. It requires exactly two logic gates running in parallel.
+
+<table width="100%">
+  <tr>
+    <th width="35%" align="center">🎬 Logic Gate Circuit</th>
+    <th width="65%" align="center">🛠️ Wiring & Implementation Specs</th>
+  </tr>
+  <tr>
+    <td align="center" valign="top" style="padding: 10px;">
+      <img src="media/half_adder_gates.gif" alt="Half Adder Logic Circuit" style="width: 100%; border-radius: 8px;" />
+      <br><br>
+      <i style="font-size: 0.9em;">Parallel processing: The XOR and AND gates evaluate the inputs simultaneously.</i>
+    </td>
+    <td align="left" valign="top" style="padding: 10px; font-size: 0.95em;">
+      <b>Wiring Steps:</b>
+      <ol>
+        <li>Split input wire $A$ into two parallel paths.</li>
+        <li>Split input wire $B$ into two parallel paths.</li>
+        <li>Connect one pair of $A$ and $B$ directly into an <b>XOR Gate</b>. The output of this gate is your <b>Sum ($S$)</b> wire.</li>
+        <li>Connect the second pair of $A$ and $B$ directly into an <b>AND Gate</b>. The output of this gate is your <b>Carry ($C$)</b> wire.</li>
+      </ol>
+      <b>Gate Depth (Delay):</b> <code>1 Tick</code><br>
+      Both the Carry and Sum are generated simultaneously. There is no waiting for one gate to finish before another starts.<br><br>
+      <b>Component Cost:</b> Very low (1 XOR, 1 AND).
+    </td>
+  </tr>
+</table>
+
+### 🚧 Limitations & The Problem with Chaining
+
+<table width="100%">
+  <tr>
+    <th width="35%" align="center">🎬 The Chaining Problem</th>
+    <th width="65%" align="center">⚠️ Why "Half" isn't enough</th>
+  </tr>
+  <tr>
+    <td align="center" valign="top" style="padding: 10px;">
+      <img src="media/half_adder_fail.png" alt="Failed Chaining of Half Adders" style="width: 100%; border-radius: 8px;" />
+      <br><br>
+      <i style="font-size: 0.9em;">Column 1 generates a Carry, but Column 2 has nowhere to plug it in!</i>
+    </td>
+    <td align="left" valign="top" style="padding: 10px; font-size: 0.95em;">
+      <b>The Core Issue:</b><br>
+      If you want to add two 4-bit numbers together (e.g., `1011 + 0111`), you cannot simply place four Half Adders side-by-side. 
+      <br><br>
+      When the first column calculates `1 + 1`, it outputs a sum of `0` and a Carry of `1`. The second column needs to add its own two inputs <i>plus</i> the Carry from the first column. A Half Adder only has two input pins ($A$ and $B$)—it is completely blind to carries coming from the right.
+      <br><br>
+      <b>The Solution:</b><br>
+      To build multi-bit calculators, we use the Half Adder strictly for the 0th bit, and upgrade to a <b>Full Adder</b> (which has an $A, B$, and $Carry_{IN}$ pin) for all subsequent columns.
+    </td>
+  </tr>
+</table>
