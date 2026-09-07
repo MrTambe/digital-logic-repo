@@ -1,0 +1,110 @@
+# 🔂 3.2 Demultiplexers (DEMUX)
+
+A **Demultiplexer (DEMUX)** performs the exact opposite function of a Multiplexer. Instead of funneling multiple inputs into a single output, a DEMUX takes a **single data input** and routes it to one of **several possible output lines**.
+
+If a MUX is a digital funnel, the DEMUX is a digital distributor. It uses "selector" lines to determine exactly which output wire receives the incoming data signal. All other unselected output wires are held strictly at OFF (`0`).
+
+---
+
+## 🎛️ 3.2.1 Basic 1-to-2 DEMUX
+
+The 1-to-2 DEMUX is the simplest configuration. It consists of one data input ($D$), one selector input ($S$), and two possible outputs ($Y_0$ and $Y_1$).
+
+<table width="100%">
+  <tr>
+    <th width="50%" align="center">🎬 Conceptual Operation</th>
+    <th width="50%" align="center">📊 Truth Table</th>
+  </tr>
+  <tr>
+    <td align="center" valign="middle">
+      <img src="media/demux_1to2_demo.gif" alt="1-to-2 DEMUX Demonstration" style="width: 100%; border-radius: 8px;" />
+      <br>
+      <i>Notice that when Selector (S) is 0, the data flows to Y0. When S is 1, the data routes to Y1. The unselected path is always 0.</i>
+    </td>
+    <td align="center" valign="middle">
+      <table style="width: 90%; margin-left: auto; margin-right: auto; text-align: center; border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th style="text-align: center; border-bottom: 2px solid #ccc; padding: 5px;">Selector ($S$)</th>
+            <th style="text-align: center; border-bottom: 2px solid #ccc; padding: 5px;">Input ($D$)</th>
+            <th style="text-align: center; border-bottom: 2px solid #ccc; padding: 5px;">$Y_0$</th>
+            <th style="text-align: center; border-bottom: 2px solid #ccc; padding: 5px;">$Y_1$</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+          </tr>
+          <tr>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>1</code></td>
+            <td align="center" style="padding: 5px;"><code>1</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+          </tr>
+          <tr>
+            <td align="center" style="padding: 5px;"><code>1</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+          </tr>
+          <tr>
+            <td align="center" style="padding: 5px;"><code>1</code></td>
+            <td align="center" style="padding: 5px;"><code>1</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>1</code></td>
+          </tr>
+        </tbody>
+      </table>
+      <br><br>
+      <b>Boolean Equations:</b><br> 
+      $Y_0 = \overline{S} \cdot D$<br>
+      $Y_1 = S \cdot D$
+    </td>
+  </tr>
+</table>
+
+### 🔹 Component Blueprint
+Building a 1-to-2 DEMUX in a logic simulator is incredibly straightforward. It requires only standard primitives:
+* **Wiring:** 
+  1. Route the Data input ($D$) into **two separate AND gates**.
+  2. Route the Selector ($S$) through a **NOT gate** and into the first AND gate (yielding $Y_0$).
+  3. Route the un-inverted Selector ($S$) directly into the second AND gate (yielding $Y_1$).
+* **Gate Depth:** `2 Ticks` (Inverter $\rightarrow$ AND)
+
+---
+
+## 🌲 3.2.2 The 1-to-4 DEMUX
+
+To route a single input signal to four different destinations, we need two selector bits ($S_1$ and $S_0$) to count through the four possible output states (`00`, `01`, `10`, `11`). 
+
+### 📊 1-to-4 Truth Table
+
+When reading this table, remember that the output relies entirely on the Data bit ($D$). If $D=0$, all outputs are $0$ regardless of the selectors. If $D=1$, the `1` is routed to the specific $Y$ output chosen by the selectors.
+
+| Selector $S_1$ | Selector $S_0$ | Data $D$ | $Y_0$ | $Y_1$ | $Y_2$ | $Y_3$ | Logic Equation |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| `0` | `0` | `1` | `1` | `0` | `0` | `0` | $Y_0 = \overline{S_1} \cdot \overline{S_0} \cdot D$ |
+| `0` | `1` | `1` | `0` | `1` | `0` | `0` | $Y_1 = \overline{S_1} \cdot S_0 \cdot D$ |
+| `1` | `0` | `1` | `0` | `0` | `1` | `0` | $Y_2 = S_1 \cdot \overline{S_0} \cdot D$ |
+| `1` | `1` | `1` | `0` | `0` | `0` | `1` | $Y_3 = S_1 \cdot S_0 \cdot D$ |
+
+### 🧠 How the Routing Works
+The Data line feeds into four different AND gates simultaneously. The selector lines act as a binary combination lock. By using NOT gates to invert the selectors at different stages, only **one** specific AND gate will ever receive two `1`s from the selectors at any given time, allowing the Data bit to pass through only that specific gate.
+
+---
+
+## 💡 3.2.3 Practical Hardware Applications
+
+While multiplexers handle *gathering* data, demultiplexers handle *distributing* it. In a modern CPU architecture, DEMUX chips are vital for taking single instructions or data blocks and routing them to the correct hardware subsystem.
+
+### 1. Instruction Decoding (The CPU Control Unit)
+When a CPU fetches an instruction (like `ADD` or `STORE`), that instruction is just a binary code. The Control Unit uses a DEMUX (often referred to strictly as a "Decoder" when the Data line is permanently tied to `1`) to translate that binary opcode. If the opcode is `0101`, the DEMUX routes an activation signal specifically to the wire that wakes up the ALU to perform addition, leaving all other circuits asleep.
+
+### 2. RAM Memory Addressing
+When your computer wants to save a byte to memory, it sends the data along the main bus. But how does it know which specific tiny capacitor inside the RAM chip should receive it? The memory address is fed into a massive grid of Demultiplexers. The DEMUX decodes the address and opens the write-enable gate for exactly one specific byte address out of billions.
+
+### 3. Serial-to-Parallel Conversion
+When data arrives via a single wire (like a USB cable or an Ethernet connection), it comes sequentially, one bit at a time. A DEMUX, paired with a clock signal acting as the selector, can take that fast stream of single bits and distribute them across an 8-bit or 16-bit wide internal parallel bus so the CPU can process the entire chunk at once.

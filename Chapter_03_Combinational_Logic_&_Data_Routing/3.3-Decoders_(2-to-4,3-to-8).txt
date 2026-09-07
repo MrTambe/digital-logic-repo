@@ -1,0 +1,125 @@
+# 🎯 3.3 Decoders (2-to-4, 3-to-8)
+
+A **Decoder** is practically identical to a Demultiplexer (DEMUX) with one key structural difference: **it has no data input line**. Instead of routing a data signal to a specific destination, a decoder takes an $N$-bit binary number as its input and simply turns ON the corresponding output line out of $2^N$ possibilities. 
+
+If you feed it `10` (binary for 2), output wire number 2 lights up. All other wires stay completely OFF. It literally "decodes" a compressed binary number into a single, physical location trigger.
+
+*(Note: In physical hardware, a DEMUX is often just a Decoder with an "Enable" pin. If you tie a DEMUX's Data line permanently to `1`, it becomes a Decoder!)*
+
+---
+
+## 🎛️ 3.3.1 The 2-to-4 Decoder
+
+A 2-to-4 Decoder takes a 2-bit input code ($A_1$ and $A_0$) and translates it into one of four distinct output signals ($Y_0$, $Y_1$, $Y_2$, $Y_3$).
+
+<table width="100%">
+  <tr>
+    <th width="50%" align="center">🎬 Conceptual Operation</th>
+    <th width="50%" align="center">📊 Truth Table</th>
+  </tr>
+  <tr>
+    <td align="center" valign="middle">
+      <img src="media/decoder_2to4_demo.gif" alt="2-to-4 Decoder Demonstration" style="width: 100%; border-radius: 8px;" />
+      <br>
+      <i>Notice that the binary value of the inputs directly corresponds to the index of the single illuminated output wire.</i>
+    </td>
+    <td align="center" valign="middle">
+      <table style="width: 90%; margin-left: auto; margin-right: auto; text-align: center; border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th style="text-align: center; border-bottom: 2px solid #ccc; padding: 5px;">Input $A_1$</th>
+            <th style="text-align: center; border-bottom: 2px solid #ccc; padding: 5px;">Input $A_0$</th>
+            <th style="text-align: center; border-bottom: 2px solid #ccc; padding: 5px;">$Y_0$</th>
+            <th style="text-align: center; border-bottom: 2px solid #ccc; padding: 5px;">$Y_1$</th>
+            <th style="text-align: center; border-bottom: 2px solid #ccc; padding: 5px;">$Y_2$</th>
+            <th style="text-align: center; border-bottom: 2px solid #ccc; padding: 5px;">$Y_3$</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px; background-color: rgba(0, 255, 0, 0.1);"><b><code>1</code></b></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+          </tr>
+          <tr>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>1</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px; background-color: rgba(0, 255, 0, 0.1);"><b><code>1</code></b></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+          </tr>
+          <tr>
+            <td align="center" style="padding: 5px;"><code>1</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px; background-color: rgba(0, 255, 0, 0.1);"><b><code>1</code></b></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+          </tr>
+          <tr>
+            <td align="center" style="padding: 5px;"><code>1</code></td>
+            <td align="center" style="padding: 5px;"><code>1</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px; background-color: rgba(0, 255, 0, 0.1);"><b><code>1</code></b></td>
+          </tr>
+        </tbody>
+      </table>
+      <br><br>
+      <b>Boolean Equations:</b><br> 
+      $Y_0 = \overline{A_1} \cdot \overline{A_0}$<br>
+      $Y_1 = \overline{A_1} \cdot A_0$<br>
+      $Y_2 = A_1 \cdot \overline{A_0}$<br>
+      $Y_3 = A_1 \cdot A_0$
+    </td>
+  </tr>
+</table>
+
+### 🔹 Component Blueprint
+Building this in a logic simulator requires the same binary combination lock setup as the DEMUX, but without a Data wire to worry about.
+* **Wiring:** 
+  1. Set up four separate AND gates (one for each $Y$ output).
+  2. Route $A_1$ and $A_0$ through NOT gates where necessary to match the boolean equations above. 
+  3. For example, $Y_0$'s AND gate only connects to the inverted versions of $A_1$ and $A_0$.
+* **Gate Depth:** `2 Ticks` (Inverter $\rightarrow$ AND)
+
+---
+
+## 🌲 3.3.2 The 3-to-8 Decoder
+
+When scaling up, a 3-to-8 decoder uses 3 binary input bits to select one of 8 distinct output lines. This is the bedrock of byte-level addressing. 
+
+While you *could* build this using massive 3-input AND gates for every output, physical hardware usually implements an **Enable Pin (EN)**. By taking two 2-to-4 Decoders and using the 3rd input bit ($A_2$) to turn one chip ON and the other OFF, you cleanly bridge them together.
+
+### 📊 3-to-8 Truth Table (Cascaded Architecture)
+
+| $A_2$ (High) | $A_1$ | $A_0$ | Active Decoder | Active Output | Decimal Value |
+| :---: | :---: | :---: | :--- | :--- | :---: |
+| `0` | `0` | `0` | **Bottom Chip** ($A_2 = 0$) | $Y_0$ | 0 |
+| `0` | `0` | `1` | **Bottom Chip** ($A_2 = 0$) | $Y_1$ | 1 |
+| `0` | `1` | `0` | **Bottom Chip** ($A_2 = 0$) | $Y_2$ | 2 |
+| `0` | `1` | `1` | **Bottom Chip** ($A_2 = 0$) | $Y_3$ | 3 |
+| `1` | `0` | `0` | **Top Chip** ($A_2 = 1$) | $Y_4$ | 4 |
+| `1` | `0` | `1` | **Top Chip** ($A_2 = 1$) | $Y_5$ | 5 |
+| `1` | `1` | `0` | **Top Chip** ($A_2 = 1$) | $Y_6$ | 6 |
+| `1` | `1` | `1` | **Top Chip** ($A_2 = 1$) | $Y_7$ | 7 |
+
+---
+
+## 💡 3.3.3 Practical Hardware Applications
+
+Because computers heavily rely on translating compact binary data into physical actions, Decoders are absolutely everywhere inside a machine.
+
+### 1. Hardware Memory Addressing
+If you have 8 bytes of RAM, you don't send 8 separate wires from the CPU to turn them on. You send a 3-bit address bus to a 3-to-8 Decoder attached to the RAM. The decoder reads the address (e.g., `101`) and sends a single voltage spike to the Write-Enable pin of Byte 5. Modern CPUs use massive multi-staged decoders to address gigabytes of memory using 64-bit addresses.
+
+### 2. CPU Instruction Decoders
+When a CPU fetches a machine-code instruction (like `10110010`), the Control Unit must figure out which circuitry to turn on. An instruction decoder takes that binary opcode and routes a `1` to the specific execution pipeline—perhaps waking up the ALU for math, or waking up a register to store data.
+
+### 3. Display Drivers (BCD to 7-Segment)
+Every digital clock uses a specialized decoder. It takes a 4-bit Binary Coded Decimal (BCD) number from a counter (like `0111` for 7) and decodes it. Instead of lighting up just one wire, this specific decoder lights up the exact combination of LED segments required to draw a visible "7" on the screen.

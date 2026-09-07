@@ -1,0 +1,118 @@
+# 🗜️ 3.4 Encoders & Priority Encoders
+
+If a Decoder takes a compressed binary number and expands it to light up a single physical wire, an **Encoder** does the exact opposite. It takes multiple physical input wires (where only one is active) and compresses that information into a compact binary output code.
+
+Think of it like a keyboard: you have over 100 physical keys (inputs). When you press the 'A' key, the keyboard doesn't send 100 wires to the CPU. An encoder compresses that single physical button press into an 8-bit binary code to send down a single USB cable.
+
+---
+
+## 🎛️ 3.4.1 The Basic 4-to-2 Encoder
+
+A basic 4-to-2 Encoder has four input lines ($D_0, D_1, D_2, D_3$) and two output lines ($Y_1, Y_0$). It assumes that **exactly one** input is `1` at any given time.
+
+<table width="100%">
+  <tr>
+    <th width="50%" align="center">🎬 Conceptual Operation</th>
+    <th width="50%" align="center">📊 Truth Table</th>
+  </tr>
+  <tr>
+    <td align="center" valign="middle">
+      <img src="media/encoder_basic_demo.gif" alt="4-to-2 Encoder Demonstration" style="width: 100%; border-radius: 8px;" />
+      <br>
+      <i>The active input wire's subscript number (0, 1, 2, or 3) is converted directly into its binary equivalent on the Y outputs.</i>
+    </td>
+    <td align="center" valign="middle">
+      <table style="width: 90%; margin-left: auto; margin-right: auto; text-align: center; border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th style="text-align: center; border-bottom: 2px solid #ccc; padding: 5px;">$D_3$</th>
+            <th style="text-align: center; border-bottom: 2px solid #ccc; padding: 5px;">$D_2$</th>
+            <th style="text-align: center; border-bottom: 2px solid #ccc; padding: 5px;">$D_1$</th>
+            <th style="text-align: center; border-bottom: 2px solid #ccc; padding: 5px;">$D_0$</th>
+            <th style="text-align: center; border-bottom: 2px solid #ccc; padding: 5px;">$Y_1$</th>
+            <th style="text-align: center; border-bottom: 2px solid #ccc; padding: 5px;">$Y_0$</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px; background-color: rgba(0, 255, 0, 0.1);"><b><code>1</code></b></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+          </tr>
+          <tr>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px; background-color: rgba(0, 255, 0, 0.1);"><b><code>1</code></b></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>1</code></td>
+          </tr>
+          <tr>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px; background-color: rgba(0, 255, 0, 0.1);"><b><code>1</code></b></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>1</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+          </tr>
+          <tr>
+            <td align="center" style="padding: 5px; background-color: rgba(0, 255, 0, 0.1);"><b><code>1</code></b></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>0</code></td>
+            <td align="center" style="padding: 5px;"><code>1</code></td>
+            <td align="center" style="padding: 5px;"><code>1</code></td>
+          </tr>
+        </tbody>
+      </table>
+      <br><br>
+      <b>Boolean Equations (OR Gates):</b><br> 
+      $Y_1 = D_2 + D_3$<br>
+      $Y_0 = D_1 + D_3$
+    </td>
+  </tr>
+</table>
+
+### 🚨 The Two Fatal Flaws of a Basic Encoder
+If you build the boolean equations above using just two OR gates, you immediately run into two massive hardware bugs:
+1. **The "Multiple Press" Bug:** What happens if $D_1$ and $D_2$ are both `1` at the same time? According to the OR gates, $Y_1$ becomes `1` and $Y_0$ becomes `1`. The output is `11` (which means $D_3$). Pressing 1 and 2 magically outputs a 3. This is catastrophic for data integrity.
+2. **The "Ghost Zero" Bug:** If *no* inputs are pressed (all are `0`), the output is `00`. But if $D_0$ is pressed, the output is *also* `00`. The computer has no way to tell the difference between "$D_0$ is active" and "Nothing is happening."
+
+---
+
+## 🚦 3.4.2 The Priority Encoder (The Real-World Solution)
+
+Hardware engineers solved both problems by upgrading to a **Priority Encoder**. 
+
+It introduces a **Valid Bit (V)** that only turns on if *at least one* input is active. This solves the "Ghost Zero" bug. It also introduces **Priority Logic**: if multiple inputs are active at the same time, the hardware ignores the lower numbers and only outputs the binary code of the highest active input.
+
+### 📊 4-to-2 Priority Encoder Truth Table
+*Note: The `X` stands for "Don't Care". If $D_3$ is ON, it doesn't matter what the lower inputs are doing; the output will always be `11`.*
+
+| $D_3$ | $D_2$ | $D_1$ | $D_0$ | Output $Y_1$ | Output $Y_0$ | Valid ($V$) | State Description |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| `0` | `0` | `0` | `0` | `0` | `0` | **`0`** | System Idle. Output `00` is invalid. |
+| `0` | `0` | `0` | `1` | `0` | `0` | **`1`** | $D_0$ is pressed. Output `00` is valid. |
+| `0` | `0` | `1` | `X` | `0` | `1` | **`1`** | $D_1$ is pressed. Ignores $D_0$. |
+| `0` | `1` | `X` | `X` | `1` | `0` | **`1`** | $D_2$ is pressed. Ignores $D_1$ and $D_0$. |
+| `1` | `X` | `X` | `X` | `1` | `1` | **`1`** | $D_3$ is pressed. Overrides everything. |
+
+**Priority Logic Equations:**
+*   $V = D_0 + D_1 + D_2 + D_3$ *(Turns on if ANY input is 1)*
+*   $Y_1 = D_2 + D_3$
+*   $Y_0 = D_3 + (\overline{D_2} \cdot D_1)$ *(Only look at $D_1$ if $D_2$ is NOT active)*
+
+---
+
+## 💡 3.4.3 Practical Hardware Applications
+
+Because the physical world is messy and multiple things happen at once, standard encoders are rarely used. Priority encoders are the industry standard.
+
+### 1. CPU Interrupt Controllers (IRQs)
+Your CPU is constantly receiving hardware interrupt signals—your mouse moves, a network packet arrives, and the hard drive finishes reading data, all at the exact same millisecond. These physical wires feed into a massive Priority Encoder. The encoder assigns a rigid hierarchy (e.g., the system clock ticking is higher priority than a mouse twitch) and passes the binary ID of the most important task to the CPU so it knows what to handle first.
+
+### 2. Matrix Keyboards & Synthesizers
+When you smash your hand on a digital piano or press five keys on your typing keyboard at once (N-key rollover limits notwithstanding), a priority encoder (or a matrix of them) dictates exactly which physical switch gets registered and sent to the motherboard first, preventing garbled inputs.
